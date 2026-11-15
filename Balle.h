@@ -1,9 +1,7 @@
-#ifndef SFML1_BALLE_H
-#define SFML1_BALLE_H
+#ifndef PONG_BALLE_H
+#define PONG_BALLE_H
 
 #include "Jouet.h"
-
-using namespace sf;
 
 class Balle : public Jouet
 {
@@ -23,7 +21,9 @@ public:
     void toucherPlancher();
 
     void bouger();
+
+    [[nodiscard]] bool descend() const;
 };
 
 
-#endif //SFML1_BALLE_H
+#endif //PONG_BALLE_H

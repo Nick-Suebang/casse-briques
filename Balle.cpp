@@ -3,8 +3,8 @@
 //-----------------------------------------------------------------------------
 Balle::Balle(float argDepartX, float argDepartY) : Jouet(argDepartX, argDepartY, 10, 10)
 {
-    departX=argDepartX;
-    departY=argDepartY;
+    departX = argDepartX;
+    departY = argDepartY;
 }
 
 //-----------------------------------------------------------------------------
@@ -31,7 +31,12 @@ void Balle::bouger()
 {
     position.y += vitesseVerticale;
     position.x += vitesseHorizontale;
-
-    forme.setPosition(position);
 }
+
+//-----------------------------------------------------------------------------
+bool Balle::descend() const
+{
+    return vitesseVerticale > 0;
+}
+
 //-----------------------------------------------------------------------------

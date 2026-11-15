@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pong</title>
+    <style>
+        html, body { margin: 0; height: 100%; background: #111; color: #ccc; font-family: system-ui, sans-serif; }
+        body { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+        canvas { display: block; background: #000; max-width: 100vw; max-height: calc(100vh - 60px); outline: none; }
+        #statut { font-size: 14px; color: #888; }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" tabindex="-1" oncontextmenu="event.preventDefault()"></canvas>
+    <div id="statut">Chargement…</div>
+    <script>
+        // Empêche les flèches et la barre d'espace de faire défiler la page
+        window.addEventListener('keydown', function (e) {
+            if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', ' '].indexOf(e.key) !== -1) e.preventDefault();
+        });
+        var statut = document.getElementById('statut');
+        var Module = {
+            canvas: document.getElementById('canvas'),
+            setStatus: function (texte) { statut.textContent = texte || 'Jeu C++ compilé en WebAssembly avec raylib'; },
+            onAbort: function () { statut.textContent = 'Le jeu n’a pas pu démarrer dans ce navigateur.'; }
+        };
+    </script>
+    {{{ SCRIPT }}}
+</body>
+</html>

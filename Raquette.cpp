@@ -9,20 +9,18 @@ Raquette::Raquette(float argDepartX, float argDepartY) : Jouet(argDepartX, argDe
 void Raquette::bougerAGauche()
 {
     position.x -= vitesse;
-    forme.setPosition(position);
 }
 
 //-----------------------------------------------------------------------------
 void Raquette::bougerADroite()
 {
     position.x += vitesse;
-    forme.setPosition(position);
 }
 
-void Raquette::setPositionX(int argPosition)
+//-----------------------------------------------------------------------------
+void Raquette::setPositionX(float argPosition)
 {
     position.x = argPosition;
-    forme.setPosition(position);
 }
 
 //-----------------------------------------------------------------------------

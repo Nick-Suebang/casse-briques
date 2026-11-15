@@ -1,24 +1,24 @@
-#ifndef SFML1_SON_H
-#define SFML1_SON_H
+#ifndef PONG_SON_H
+#define PONG_SON_H
 
-#include <SFML/Audio.hpp>
-
-using namespace sf;
+#include "raylib.h"
 
 class Son
 {
 private:
-    Sound sound;
-    SoundBuffer buffer;
-    const std::string SON_RATE{"rate.ogg"};
-    const std::string SON_REBOND{"rebond.ogg"};
-    const std::string SON_REUSSI{"reussi.ogg"};
+    Sound sonRate;
+    Sound sonRebond;
+    Sound sonReussi;
 public:
-    void beep(const std::string &fichier);
+    Son();
+    ~Son();
+    Son(const Son &) = delete;
+    Son &operator=(const Son &) = delete;
+
     void jouerSonRate();
     void jouerSonRebond();
     void jouerSonReussi();
 };
 
 
-#endif //SFML1_SON_H
+#endif //PONG_SON_H

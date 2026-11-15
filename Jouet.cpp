@@ -1,29 +1,23 @@
 #include "Jouet.h"
 
 //-----------------------------------------------------------------------------
-Jouet::Jouet(float argDepartX, float departY, int hauteur, int argLargeur)
+Jouet::Jouet(float argDepartX, float argDepartY, float argLargeur, float argHauteur)
 {
-
-
     // assigne ses arguments au x et y de position
-    position.x = argDepartX;
-    position.y = departY;
-
-    // initialise forme en définissant sa taille et sa position
-    forme.setSize(sf::Vector2f(hauteur, argLargeur));
-    forme.setPosition(position);
+    position = {argDepartX, argDepartY};
+    taille = {argLargeur, argHauteur};
 }
 
 //-----------------------------------------------------------------------------
-FloatRect Jouet::getHitBox() const
+Rectangle Jouet::getHitBox() const
 {
-    return forme.getGlobalBounds();
+    return {position.x, position.y, taille.x, taille.y};
 }
 
 //-----------------------------------------------------------------------------
-RectangleShape Jouet::getForme()
+void Jouet::dessiner() const
 {
-    return forme;
+    DrawRectangleRec(getHitBox(), couleur);
 }
 
 //-----------------------------------------------------------------------------

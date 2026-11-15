@@ -1,9 +1,7 @@
-#ifndef SFML1_RAQUETTE_H
-#define SFML1_RAQUETTE_H
+#ifndef PONG_RAQUETTE_H
+#define PONG_RAQUETTE_H
 
 #include "Jouet.h"
-
-using namespace sf;
 
 class Raquette : public Jouet
 {
@@ -16,8 +14,8 @@ public:
 
     void bougerADroite();
 
-    void setPositionX (int argPosition);
+    void setPositionX(float argPosition);
 };
 
 
-#endif //SFML1_RAQUETTE_H
+#endif //PONG_RAQUETTE_H
