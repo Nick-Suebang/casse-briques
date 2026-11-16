@@ -1,17 +1,13 @@
-#ifndef BRIQUE_H
-#define BRIQUE_H
+#ifndef PONG_BRIQUE_H
+#define PONG_BRIQUE_H
 
-#include <SFML/Graphics/Color.hpp>
 #include "Jouet.h"
 
-
-class Brique : public Jouet {
-private:
-    sf::Color COULEURS[5] = {Color::Cyan, Color::Blue, Color::Green, Color::Red, Color::Yellow};
+class Brique : public Jouet
+{
 public:
-    Brique (float departX, float departY, int largeur, int epaisseur);
+    Brique(float argDepartX, float argDepartY, float argLargeur, float argEpaisseur);
 };
 
 
-
-#endif //BRIQUE_H
+#endif //PONG_BRIQUE_H

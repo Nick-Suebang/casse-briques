@@ -1,33 +1,37 @@
 #include "Son.h"
-#include <SFML/Audio.hpp>
-
-using namespace sf;
 
 //-----------------------------------------------------------------------------
-void Son::beep(const std::string &fichier)
+// Les sons sont chargés une seule fois au démarrage
+// (InitAudioDevice doit avoir été appelé avant).
+Son::Son()
+    : sonRate{LoadSound("assets/rate.ogg")},
+      sonRebond{LoadSound("assets/rebond.ogg")},
+      sonReussi{LoadSound("assets/reussi.ogg")}
 {
-    if (!buffer.loadFromFile(fichier))
-        return; // error
-    sound.setBuffer(buffer);
-    sound.play();
+}
+
+//-----------------------------------------------------------------------------
+Son::~Son()
+{
+    UnloadSound(sonRate);
+    UnloadSound(sonRebond);
+    UnloadSound(sonReussi);
 }
 
 //-----------------------------------------------------------------------------
 void Son::jouerSonRate()
 {
-    beep(SON_RATE);
+    PlaySound(sonRate);
 }
 
 //-----------------------------------------------------------------------------
 void Son::jouerSonRebond()
 {
-    beep(SON_REBOND);
+    PlaySound(sonRebond);
 }
 
 //-----------------------------------------------------------------------------
 void Son::jouerSonReussi()
 {
-    beep(SON_REUSSI);
+    PlaySound(sonReussi);
 }
-
-//-----------------------------------------------------------------------------

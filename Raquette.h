@@ -1,23 +1,24 @@
-#ifndef SFML1_RAQUETTE_H
-#define SFML1_RAQUETTE_H
+#ifndef PONG_RAQUETTE_H
+#define PONG_RAQUETTE_H
 
 #include "Jouet.h"
-
-using namespace sf;
 
 class Raquette : public Jouet
 {
 private:
-    float vitesse{1.3f};
+    float largeurTerrain;
+
+    // Garde la raquette entièrement dans le terrain
+    void resterDansLeTerrain();
 public:
-    Raquette(float argDepartX, float argDepartY);
+    Raquette(float argCentreX, float argDepartY, float argLargeurTerrain);
 
     void bougerAGauche();
 
     void bougerADroite();
 
-    void setPositionX (int argPosition);
+    void centrerSur(float argX);
 };
 
 
-#endif //SFML1_RAQUETTE_H
+#endif //PONG_RAQUETTE_H

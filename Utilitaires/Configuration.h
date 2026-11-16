@@ -1,28 +1,34 @@
-#ifndef PROTOCONSOLE_CONFIG_H
-#define PROTOCONSOLE_CONFIG_H
+#ifndef PONG_CONFIGURATION_H
+#define PONG_CONFIGURATION_H
 
-#include <string>
-
-class Configuration
+// Constantes du jeu, connues à la compilation.
+namespace Configuration
 {
+    // Fenêtre et simulation
+    constexpr int LARGEUR_FENETRE{1024};
+    constexpr int HAUTEUR_FENETRE{764};
+    constexpr int PAS_PAR_SECONDE{400};
+    constexpr int VIES_DEPART{3};
 
-private:
-    // "Patron Singleton"
-    static Configuration *instance;
-    Configuration(){} // Constructeur privé
+    // Briques
+    constexpr int NBR_LIGNES_BRIQUE{5};
+    constexpr int NBR_RANGEES_BRIQUE{10};
+    constexpr float LARGEUR_BRIQUE{static_cast<float>(LARGEUR_FENETRE) / (NBR_RANGEES_BRIQUE + 1)};
+    constexpr float EPAISSEUR_BRIQUE{20};
+    constexpr float ESPACEMENT{LARGEUR_BRIQUE / (NBR_RANGEES_BRIQUE + 1)};
+    constexpr float ESPACEMENT_VERTICAL{10};
+    constexpr float HAUT_DES_BRIQUES{90};
 
-public :
-    static Configuration *getInstance();
+    // Raquette
+    constexpr float LARGEUR_RAQUETTE{50};
+    constexpr float EPAISSEUR_RAQUETTE{5};
+    constexpr float VITESSE_RAQUETTE{1.3f};
+    constexpr float MARGE_BAS_RAQUETTE{20};
 
-    const int FPS{400};
-    const int LARGEUR_FENETRE{1024};
-    const int HAUTEUR_FENETRE{764};
+    // Balle
+    constexpr float TAILLE_BALLE{10};
+    constexpr float VITESSE_BALLE{1.2f};
+    constexpr float ECART_BALLE_BRIQUES{100};
+}
 
-    const int NBR_LIGNES_BRIQUE {5};
-    const int NBR_RANGEES_BRIQUE {10};
-    const float LARGEUR_BRIQUE = LARGEUR_FENETRE / (NBR_RANGEES_BRIQUE + 1);
-    const float EPAISSEUR_BRIQUE {20};
-    const float ESPACEMENT = LARGEUR_BRIQUE / (NBR_RANGEES_BRIQUE + 1);
-};
-
-#endif //PROTOCONSOLE_CONFIG_H
+#endif //PONG_CONFIGURATION_H

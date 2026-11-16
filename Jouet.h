@@ -1,22 +1,23 @@
-#ifndef SFML1_JOUET_H
-#define SFML1_JOUET_H
+#ifndef PONG_JOUET_H
+#define PONG_JOUET_H
 
-#include <SFML/Graphics.hpp>
+#include "raylib.h"
 
-using namespace sf;
-
+// Élément rectangulaire du jeu (balle, raquette, brique).
 class Jouet
 {
 protected:
-    Vector2f position;
-    RectangleShape forme;
+    Vector2 position;
+    Vector2 taille;
+    Color couleur;
 public:
-    Jouet(float argDepartX, float argDepartY, int argHauteur, int argLargeur);
+    Jouet(float argDepartX, float argDepartY, float argLargeur, float argHauteur, Color argCouleur = WHITE);
+    virtual ~Jouet() = default;
 
-    [[nodiscard]] FloatRect getHitBox() const;
+    [[nodiscard]] Rectangle getHitBox() const;
 
-    [[nodiscard]] RectangleShape getForme();
+    void dessiner() const;
 };
 
 
-#endif //SFML1_JOUET_H
+#endif //PONG_JOUET_H

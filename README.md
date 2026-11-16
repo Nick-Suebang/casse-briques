@@ -1,174 +1,68 @@
-# Jeu de Pong avec SFML
+# Pong (casse-briques) en C++ avec raylib
 
-Ce projet est une implémentation du célèbre jeu Pong utilisant la bibliothèque SFML (Simple and Fast Multimedia Library). Le jeu reprend les mécaniques classiques du Pong avec quelques fonctionnalités modernes.
+Un casse-briques écrit en C++ avec la bibliothèque [raylib](https://www.raylib.com/).
+Le même code se compile en programme pour ordinateur **et** en WebAssembly pour être joué directement dans un navigateur.
 
-## Table des matières
+**Jouer en ligne :** https://nick-suebang.github.io/pong-game/
 
-- [Prérequis](#prérequis)
-- [Installation](#installation)
-- [Utilisation](#utilisation)
-- [Structure du projet](#structure-du-projet)
-- [Classes principales](#classes-principales)
-- [Contrôles](#contrôles)
+## Contrôles
 
-## Prérequis
+- **Espace**, **Entrée** ou **clic** : commencer / rejouer
+- **Flèche gauche / droite** : déplacer la raquette
+- **Cliquer-glisser** la raquette avec la souris
+- **R** : recommencer la partie
+- **Q** : quitter (version ordinateur)
 
-- CMake (version 3.15 ou supérieure)
-- Compilateur C++ supportant C++14
-- SFML 2.x
-- Un système d'exploitation Linux ou Windows
+## Compiler pour le web
 
-## Installation
+Prérequis : [Emscripten](https://emscripten.org/docs/getting_started/downloads.html) et CMake 3.20+.
 
-1. Clonez le dépôt :
 ```bash
-git clone <url-du-repo>
+emcmake cmake -S . -B build-web -DCMAKE_BUILD_TYPE=Release
+cmake --build build-web
 ```
 
-2. Créez un dossier build et accédez-y :
+Cela produit `index.html`, `index.js`, `index.wasm` et `index.data` dans `build-web/`.
+Pour tester, servez ce dossier avec un serveur web (ouvrir le fichier directement ne fonctionne pas) :
+
 ```bash
-cd 20241121103027_Nick_Hariel-2333658-Lab10
-mkdir build
-cd build
+python -m http.server 8000 --directory build-web
 ```
 
-3. Générez les fichiers de build avec CMake :
+puis ouvrez http://localhost:8000.
+
+## Compiler pour l'ordinateur
+
+Prérequis : un compilateur C++17 et CMake 3.20+. raylib est téléchargé automatiquement.
+
 ```bash
-cmake ..
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build
 ```
 
-4. Compilez le projet :
-```bash
-cmake --build .
-```
+## Mise en ligne
 
-## Utilisation
-
-Pour lancer le jeu, exécutez le fichier généré `sfml1` depuis le dossier build :
-```bash
-./sfml1
-```
+Le workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) compile le jeu en WebAssembly et le publie sur GitHub Pages à chaque push sur `main`.
 
 ## Structure du projet
 
 ```
 .
-├── CMakeLists.txt
-├── main.cpp
-├── Affichage.cpp/h
-├── Balle.cpp/h
-├── Brique.cpp
-├── Jouet.cpp/h
-├── Raquette.cpp/h
-├── Son.cpp/h
-└── Utilitaires/
-    ├── Chronometre.cpp/h
-    └── Configuration.cpp/h
+├── CMakeLists.txt          # build ordinateur + web
+├── main.cpp                # ouvre la fenêtre et lance la boucle (ordinateur ou navigateur)
+├── Jeu.cpp/h               # une partie : états, règles, collisions, rendu
+├── Jouet.cpp/h             # classe de base : position, taille, couleur
+├── Balle.cpp/h             # mouvement et rebonds
+├── Raquette.cpp/h          # déplacement clavier / souris, reste dans le terrain
+├── Brique.cpp/h            # briques de couleur aléatoire
+├── Affichage.cpp/h         # textes (police DS-DIGIT)
+├── Son.cpp/h               # effets sonores
+├── Utilitaires/
+│   └── Configuration.h     # constantes du jeu (constexpr)
+├── assets/                 # police et sons
+└── web/shell.html          # page HTML qui accueille le jeu
 ```
 
-## Classes principales
-
-### Raquette
-Gère le comportement et le rendu des raquettes des joueurs.
-- Déplacement vertical
-- Collision avec la balle
-- Rendu graphique
-
-### Balle
-Implémente la logique de la balle.
-- Mouvement et rebonds
-- Collisions avec les raquettes et les murs
-- Physique réaliste
-
-### Affichage
-Gère tout l'aspect graphique du jeu.
-- Rendu des éléments
-- Interface utilisateur
-- Score et informations
-
-### Son
-Gère les effets sonores du jeu.
-- Sons de collision
-- Effets sonores divers
-- Musique de fond (si présente)
-
-### Utilitaires
-#### Chronometre
-- Gestion du temps de jeu
-- Mesure des intervalles
-
-#### Configuration
-- Paramètres du jeu
-- Options configurables
-
-## Contrôles
-
-### Joueur 1 (gauche)
-- Haut : W
-- Bas : S
-
-### Joueur 2 (droite)
-- Haut : Flèche haut
-- Bas : Flèche bas
-
-### Général
-- ESC : Pause/Menu
-- R : Réinitialiser la partie
-- Q : Quitter le jeu
-
-## Fonctionnalités
-
-- Mode 2 joueurs
-- Système de score
-- Effets sonores
-- Physique réaliste
-- Interface utilisateur intuitive
-- Possibilité de personnalisation via le fichier de configuration
-
-## Développement
-
-Le projet utilise CMake comme système de build et est structuré de manière modulaire pour faciliter la maintenance et les extensions futures.
-
-### Compilation en mode Debug
-
-```bash
-cmake -DCMAKE_BUILD_TYPE=Debug ..
-cmake --build .
-```
-
-### Compilation en mode Release
-
-```bash
-cmake -DCMAKE_BUILD_TYPE=Release ..
-cmake --build .
-```
-
-## Dépendances externes
-
-Le projet utilise les composants suivants de SFML :
-- sfml-system
-- sfml-graphics
-- sfml-window
-- sfml-network
-- sfml-audio
-
-## Contribution
-
-Pour contribuer au projet :
-1. Forkez le dépôt
-2. Créez une branche pour votre fonctionnalité
-3. Committez vos changements
-4. Poussez vers la branche
-5. Ouvrez une Pull Request
-
-## Licence
-
-Ce projet est distribué sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
-
-## Auteurs
+## Auteur
 
 - Nick Hariel
-
-## Support
-
-Pour toute question ou problème, veuillez ouvrir une issue dans le dépôt GitHub.

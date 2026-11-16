@@ -1,22 +1,26 @@
-#ifndef SFML1_AFFICHAGE_H
-#define SFML1_AFFICHAGE_H
+#ifndef PONG_AFFICHAGE_H
+#define PONG_AFFICHAGE_H
 
-#include <SFML/Graphics.hpp>
+#include <string>
+#include "raylib.h"
 
-using namespace sf;
-
+// Dessine les textes du jeu avec la police DS-DIGIT.
 class Affichage
 {
 private:
     Font police;
-    Text text;
+    float largeurZone;
 public:
-    Affichage();
+    explicit Affichage(float argLargeurZone);
+    ~Affichage();
+    Affichage(const Affichage &) = delete;
+    Affichage &operator=(const Affichage &) = delete;
 
-    [[nodiscard]] Text getText();
+    void dessinerTexte(const std::string &texte, Vector2 position, float taille, Color couleur) const;
 
-    void setMessage(const std::string &message);
+    // Dessine un texte centré horizontalement à la hauteur y
+    void dessinerCentre(const std::string &texte, float y, float taille, Color couleur) const;
 };
 
 
-#endif //SFML1_AFFICHAGE_H
+#endif //PONG_AFFICHAGE_H

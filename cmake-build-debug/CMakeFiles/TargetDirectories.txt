@@ -1,3 +1,0 @@
-/home/etudiant/Documents/Nick_Hariel-2333658-Lab10/cmake-build-debug/CMakeFiles/sfml1.dir
-/home/etudiant/Documents/Nick_Hariel-2333658-Lab10/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/etudiant/Documents/Nick_Hariel-2333658-Lab10/cmake-build-debug/CMakeFiles/rebuild_cache.dir

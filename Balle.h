@@ -1,17 +1,14 @@
-#ifndef SFML1_BALLE_H
-#define SFML1_BALLE_H
+#ifndef PONG_BALLE_H
+#define PONG_BALLE_H
 
 #include "Jouet.h"
-
-using namespace sf;
 
 class Balle : public Jouet
 {
 private:
-    float departX;
-    float departY;
-    float vitesseHorizontale{1.2f};
-    float vitesseVerticale{1.2f};
+    Vector2 depart;
+    float vitesseHorizontale;
+    float vitesseVerticale;
 
 public:
     Balle(float argDepartX, float argDepartY);
@@ -23,7 +20,11 @@ public:
     void toucherPlancher();
 
     void bouger();
+
+    [[nodiscard]] bool descend() const;
+
+    [[nodiscard]] bool vaADroite() const;
 };
 
 
-#endif //SFML1_BALLE_H
+#endif //PONG_BALLE_H
