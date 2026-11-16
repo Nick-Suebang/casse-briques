@@ -4,10 +4,10 @@
 // Les sons sont chargés une seule fois au démarrage
 // (InitAudioDevice doit avoir été appelé avant).
 Son::Son()
+    : sonRate{LoadSound("assets/rate.ogg")},
+      sonRebond{LoadSound("assets/rebond.ogg")},
+      sonReussi{LoadSound("assets/reussi.ogg")}
 {
-    sonRate = LoadSound("assets/rate.ogg");
-    sonRebond = LoadSound("assets/rebond.ogg");
-    sonReussi = LoadSound("assets/reussi.ogg");
 }
 
 //-----------------------------------------------------------------------------
@@ -35,5 +35,3 @@ void Son::jouerSonReussi()
 {
     PlaySound(sonReussi);
 }
-
-//-----------------------------------------------------------------------------

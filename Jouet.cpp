@@ -1,11 +1,9 @@
 #include "Jouet.h"
 
 //-----------------------------------------------------------------------------
-Jouet::Jouet(float argDepartX, float argDepartY, float argLargeur, float argHauteur)
+Jouet::Jouet(float argDepartX, float argDepartY, float argLargeur, float argHauteur, Color argCouleur)
+    : position{argDepartX, argDepartY}, taille{argLargeur, argHauteur}, couleur{argCouleur}
 {
-    // assigne ses arguments au x et y de position
-    position = {argDepartX, argDepartY};
-    taille = {argLargeur, argHauteur};
 }
 
 //-----------------------------------------------------------------------------
@@ -19,5 +17,3 @@ void Jouet::dessiner() const
 {
     DrawRectangleRec(getHitBox(), couleur);
 }
-
-//-----------------------------------------------------------------------------

@@ -4,22 +4,19 @@
 #include <string>
 #include "raylib.h"
 
+// Dessine les textes du jeu avec la police DS-DIGIT.
 class Affichage
 {
 private:
     Font police;
-    std::string message;
-    static constexpr float TAILLE{75};
+    float largeurZone;
 public:
-    Affichage();
+    explicit Affichage(float argLargeurZone);
     ~Affichage();
     Affichage(const Affichage &) = delete;
     Affichage &operator=(const Affichage &) = delete;
 
-    void setMessage(const std::string &argMessage);
-
-    // Dessine le message en haut à gauche
-    void dessiner() const;
+    void dessinerTexte(const std::string &texte, Vector2 position, float taille, Color couleur) const;
 
     // Dessine un texte centré horizontalement à la hauteur y
     void dessinerCentre(const std::string &texte, float y, float taille, Color couleur) const;

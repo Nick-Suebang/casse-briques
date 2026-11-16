@@ -1,11 +1,17 @@
 #include "Affichage.h"
-#include "Utilitaires/Configuration.h"
+
+namespace
+{
+    // La police est chargée à la plus grande taille utilisée pour rester nette
+    constexpr int TAILLE_POLICE{120};
+    constexpr float ESPACEMENT_LETTRES{1};
+}
 
 //-----------------------------------------------------------------------------
-Affichage::Affichage()
+Affichage::Affichage(float argLargeurZone)
+    : police{LoadFontEx("assets/DS-DIGIT.ttf", TAILLE_POLICE, nullptr, 0)},
+      largeurZone{argLargeurZone}
 {
-    // Pour choisir une police
-    police = LoadFontEx("assets/DS-DIGIT.ttf", (int) TAILLE, nullptr, 0);
     SetTextureFilter(police.texture, TEXTURE_FILTER_BILINEAR);
 }
 
@@ -16,23 +22,14 @@ Affichage::~Affichage()
 }
 
 //-----------------------------------------------------------------------------
-void Affichage::setMessage(const std::string &argMessage)
+void Affichage::dessinerTexte(const std::string &texte, Vector2 position, float taille, Color couleur) const
 {
-    message = argMessage;
-}
-
-//-----------------------------------------------------------------------------
-void Affichage::dessiner() const
-{
-    DrawTextEx(police, message.c_str(), {0, 0}, TAILLE, 1, WHITE);
+    DrawTextEx(police, texte.c_str(), position, taille, ESPACEMENT_LETTRES, couleur);
 }
 
 //-----------------------------------------------------------------------------
 void Affichage::dessinerCentre(const std::string &texte, float y, float taille, Color couleur) const
 {
-    Vector2 dimensions = MeasureTextEx(police, texte.c_str(), taille, 1);
-    float x = (Configuration::getInstance()->LARGEUR_FENETRE - dimensions.x) / 2;
-    DrawTextEx(police, texte.c_str(), {x, y}, taille, 1, couleur);
+    Vector2 dimensions = MeasureTextEx(police, texte.c_str(), taille, ESPACEMENT_LETTRES);
+    dessinerTexte(texte, {(largeurZone - dimensions.x) / 2, y}, taille, couleur);
 }
-
-//-----------------------------------------------------------------------------

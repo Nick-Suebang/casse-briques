@@ -1,10 +1,13 @@
 #include "Balle.h"
+#include "Utilitaires/Configuration.h"
 
 //-----------------------------------------------------------------------------
-Balle::Balle(float argDepartX, float argDepartY) : Jouet(argDepartX, argDepartY, 10, 10)
+Balle::Balle(float argDepartX, float argDepartY)
+    : Jouet(argDepartX, argDepartY, Configuration::TAILLE_BALLE, Configuration::TAILLE_BALLE),
+      depart{argDepartX, argDepartY},
+      vitesseHorizontale{Configuration::VITESSE_BALLE},
+      vitesseVerticale{Configuration::VITESSE_BALLE}
 {
-    departX = argDepartX;
-    departY = argDepartY;
 }
 
 //-----------------------------------------------------------------------------
@@ -22,15 +25,14 @@ void Balle::rebondirRaquetteOuPlafond()
 //-----------------------------------------------------------------------------
 void Balle::toucherPlancher()
 {
-    position.y = departY;
-    position.x = departX;
+    position = depart;
 }
 
 //-----------------------------------------------------------------------------
 void Balle::bouger()
 {
-    position.y += vitesseVerticale;
     position.x += vitesseHorizontale;
+    position.y += vitesseVerticale;
 }
 
 //-----------------------------------------------------------------------------
@@ -40,3 +42,7 @@ bool Balle::descend() const
 }
 
 //-----------------------------------------------------------------------------
+bool Balle::vaADroite() const
+{
+    return vitesseHorizontale > 0;
+}

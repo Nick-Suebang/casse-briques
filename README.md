@@ -49,15 +49,16 @@ Le workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) compi
 ```
 .
 ├── CMakeLists.txt          # build ordinateur + web
-├── main.cpp                # boucle de jeu, états (accueil, partie, fin)
+├── main.cpp                # ouvre la fenêtre et lance la boucle (ordinateur ou navigateur)
+├── Jeu.cpp/h               # une partie : états, règles, collisions, rendu
 ├── Jouet.cpp/h             # classe de base : position, taille, couleur
 ├── Balle.cpp/h             # mouvement et rebonds
-├── Raquette.cpp/h          # déplacement clavier / souris
+├── Raquette.cpp/h          # déplacement clavier / souris, reste dans le terrain
 ├── Brique.cpp/h            # briques de couleur aléatoire
 ├── Affichage.cpp/h         # textes (police DS-DIGIT)
 ├── Son.cpp/h               # effets sonores
 ├── Utilitaires/
-│   └── Configuration.cpp/h # constantes du jeu (singleton)
+│   └── Configuration.h     # constantes du jeu (constexpr)
 ├── assets/                 # police et sons
 └── web/shell.html          # page HTML qui accueille le jeu
 ```

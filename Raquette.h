@@ -6,15 +6,18 @@
 class Raquette : public Jouet
 {
 private:
-    float vitesse{1.3f};
+    float largeurTerrain;
+
+    // Garde la raquette entièrement dans le terrain
+    void resterDansLeTerrain();
 public:
-    Raquette(float argDepartX, float argDepartY);
+    Raquette(float argCentreX, float argDepartY, float argLargeurTerrain);
 
     void bougerAGauche();
 
     void bougerADroite();
 
-    void setPositionX(float argPosition);
+    void centrerSur(float argX);
 };
 
 

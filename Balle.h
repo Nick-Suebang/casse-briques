@@ -6,10 +6,9 @@
 class Balle : public Jouet
 {
 private:
-    float departX;
-    float departY;
-    float vitesseHorizontale{1.2f};
-    float vitesseVerticale{1.2f};
+    Vector2 depart;
+    float vitesseHorizontale;
+    float vitesseVerticale;
 
 public:
     Balle(float argDepartX, float argDepartY);
@@ -23,6 +22,8 @@ public:
     void bouger();
 
     [[nodiscard]] bool descend() const;
+
+    [[nodiscard]] bool vaADroite() const;
 };
 
 

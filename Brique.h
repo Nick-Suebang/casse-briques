@@ -3,10 +3,10 @@
 
 #include "Jouet.h"
 
-
-class Brique : public Jouet {
+class Brique : public Jouet
+{
 public:
-    Brique(float departX, float departY, float largeur, float epaisseur);
+    Brique(float argDepartX, float argDepartY, float argLargeur, float argEpaisseur);
 };
 
 

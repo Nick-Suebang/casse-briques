@@ -17,14 +17,20 @@ FetchContent_MakeAvailable(raylib)
 
 add_executable(pong
         main.cpp
+        Jeu.cpp Jeu.h
         Jouet.cpp Jouet.h
         Raquette.cpp Raquette.h
         Balle.cpp Balle.h
         Brique.cpp Brique.h
         Affichage.cpp Affichage.h
         Son.cpp Son.h
-        Utilitaires/Configuration.cpp Utilitaires/Configuration.h)
+        Utilitaires/Configuration.h)
 target_link_libraries(pong PRIVATE raylib)
+if(MSVC)
+    target_compile_options(pong PRIVATE /W4)
+else()
+    target_compile_options(pong PRIVATE -Wall -Wextra -Wpedantic)
+endif()
 
 if(EMSCRIPTEN)
     # Version web : produit index.html + index.js + index.wasm + index.data
