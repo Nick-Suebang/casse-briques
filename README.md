@@ -237,6 +237,11 @@ Les principaux réglages se trouvent dans [`Utilitaires/Configuration.h`](Utilit
 
 Il suffit de modifier une valeur puis de recompiler.
 
-## Auteur
+## Auteur et contact
 
-**Nick Hariel** — [@Nick-Suebang](https://github.com/Nick-Suebang)
+**Nick Suebang** (Nick Hariel Teponno Suebang), technicien en informatique et développeur web et mobile à Rimouski (QC).
+
+- Portfolio : [nicksuebang.com](https://nicksuebang.com)
+- Courriel : [contact@nicksuebang.com](mailto:contact@nicksuebang.com)
+- GitHub : [@Nick-Suebang](https://github.com/Nick-Suebang)
+- LinkedIn : [Nick Hariel Teponno Suebang](https://www.linkedin.com/in/nick-hariel-teponno-suebang-6a8875292/)
