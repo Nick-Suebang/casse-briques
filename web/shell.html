@@ -7,13 +7,20 @@
     <style>
         html, body { margin: 0; height: 100%; background: #111; color: #ccc; font-family: system-ui, sans-serif; }
         body { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
-        canvas { display: block; background: #000; max-width: 100vw; max-height: calc(100vh - 60px); outline: none; }
+        canvas { display: block; background: #000; max-width: 100vw; max-height: calc(100vh - 120px); outline: none; }
         #statut { font-size: 14px; color: #888; }
+        .credit { font-size: 12px; color: #777; text-align: center; max-width: 70ch; padding: 0 12px; }
+        .credit p { margin: 0 0 4px; }
+        .credit a { color: #aaa; }
     </style>
 </head>
 <body>
     <canvas id="canvas" tabindex="-1" oncontextmenu="event.preventDefault()"></canvas>
     <div id="statut">Chargement…</div>
+    <footer class="credit">
+    <p>Projet de <a href="https://nicksuebang.com">Nick Suebang</a> · <a href="mailto:contact@nicksuebang.com">contact@nicksuebang.com</a> · <a href="https://github.com/Nick-Suebang/pong-game">Code source</a> · <a href="https://www.linkedin.com/in/nick-hariel-teponno-suebang-6a8875292/">LinkedIn</a></p>
+    <p>Aucune donnée personnelle n’est recueillie : le programme s’exécute entièrement dans votre navigateur, sans témoins (cookies). Le site est hébergé par GitHub Pages, qui peut conserver des journaux techniques (adresse IP).</p>
+  </footer>
     <script>
         // Empêche les flèches et la barre d'espace de faire défiler la page
         window.addEventListener('keydown', function (e) {
