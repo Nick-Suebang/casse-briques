@@ -4,9 +4,9 @@
 
 **Un casse-briques en C++17 avec raylib, jouable sur ordinateur et directement dans le navigateur grâce à WebAssembly.**
 
-[![Jouer en ligne](https://img.shields.io/badge/▶_Jouer_en_ligne-GitHub_Pages-2ea44f?style=for-the-badge)](https://nick-suebang.github.io/pong-game/)
+[![Jouer en ligne](https://img.shields.io/badge/▶_Jouer_en_ligne-GitHub_Pages-2ea44f?style=for-the-badge)](https://nick-suebang.github.io/casse-briques/)
 
-[![Publication](https://github.com/Nick-Suebang/pong-game/actions/workflows/deploy.yml/badge.svg)](https://github.com/Nick-Suebang/pong-game/actions/workflows/deploy.yml)
+[![Publication](https://github.com/Nick-Suebang/casse-briques/actions/workflows/deploy.yml/badge.svg)](https://github.com/Nick-Suebang/casse-briques/actions/workflows/deploy.yml)
 ![C++17](https://img.shields.io/badge/C%2B%2B-17-00599C?logo=cplusplus&logoColor=white)
 ![raylib](https://img.shields.io/badge/raylib-5.5-black)
 ![WebAssembly](https://img.shields.io/badge/WebAssembly-Emscripten-654FF0?logo=webassembly&logoColor=white)
@@ -53,7 +53,7 @@ Le projet montre comment **un seul code C++** peut produire :
 
 ### En ligne
 
-Ouvrez **https://nick-suebang.github.io/pong-game/** dans un navigateur récent (Chrome, Edge, Firefox ou Safari).
+Ouvrez **https://nick-suebang.github.io/casse-briques/** dans un navigateur récent (Chrome, Edge, Firefox ou Safari).
 
 ### Contrôles
 
